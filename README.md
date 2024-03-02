@@ -1,8 +1,9 @@
 # Barn-door-tracker---Arduino-code-  (instrucoes em portugues abaixo)
 Arduino code to controls a step motor 28byj 48 using a driver Uln2003. 
 
-Based on the 200mm barn door tracker project adapted from  
-https://github.com/aglomeradoaberto/barn_door_tracker , https://www.youtube.com/watch?v=P_qqLA0WKJg , https://tinyurl.com/30tracker
+Based on the 200mm barn door tracker project adapted from    
+https://github.com/aglomeradoaberto/barn_door_tracker ,  
+https://www.youtube.com/watch?v=P_qqLA0WKJg , https://tinyurl.com/30tracker
 
 There is also a code for the 3D printed star tracker project:  
 https://www.instructables.com/Equatorial-Mount-for-DSLR/
@@ -12,7 +13,7 @@ ___
 
 Calculations:
 
-$$ \text{Earth rotation (star rotation in our points of view)} = 360 degrees / 24 h   = 360 / (60*24) min = 0.25 degrees/min  $$
+$$ \text{Earth rotation (star rotation in our points of view)} = 360 degrees / 24 h  = 360 / (60*24) min = 0.25 degrees/min  $$
 
 Or in rad ($rad = 2\pi/360 degree$) this becomes 
 
