@@ -48,19 +48,19 @@ ___
 
 Calculos:
 
-$$ \text{Rotacao da terra(rotacao das estrelas no nosso referencial)} = 360 degrees / 24 h   = 360 / (60*24) min = 0.25 degrees/min  $$
+$$ \text{Rotacao da terra(rotacao das estrelas no nosso referencial)} = 360 graus / 24 h   = 360 / (60*24) min = 0.25 graus/min  $$
 
 Ou usandando radiano ($rad = 2\pi/360 degree$) 
 
 $$ \omega_{terra} = 2 \pi / 60*24 = 0.00463 rad /min $$
 
-Agora, $\omega_{terra}$ e a velocidade angular da porta, i.e, o quao rapido a porta deve abrir. 
+Agora, $\omega_{terra}$ devera ser a velocidade angular da porta, i.e, o quao rapido a porta deve abrir. 
 
 A velocidade tangencial (para cima) de um ponto da porta sera $V = r \omega_{earth}$, que para um ponto a 200mm do dobradica se torna
 
 $$ V = r_{eixo} \omega_{terra} = 200*0.00463 = 0.872664626 mm/min $$
 
-Por outro lado, a velocidade tangencial é controlada pela passo de rosca do eixo metalixo e pela revolução da engrenagem. Para uma rosca de 0,8mm, isso significa que ela subirá 0,8mm a cada revolução da engrenagem.
+Por outro lado, a velocidade tangencial é controlada pela passo de rosca do eixo metalico e pela revolução da engrenagem. Para uma rosca de 0,8mm, isso significa que ela subirá 0,8mm a cada revolução da engrenagem.
 Portanto, precisaríamos de aproximadamente uma revolução por minuto para corresponder à velocidade tangencial necessária para um ponto na porta a 200mm da dobradiça.
 
 Se usarmos uma redução de engrenagem, a velocidade do motor deve ser aumentada pelo fator da engrenagem, que é a razão das roscas da engrenagem (ou a razão do raio da engrenagem).
