@@ -18,13 +18,13 @@ $$ \text{Earth rotation (star rotation in our points of view)} = 360 degrees / 2
 
 Or in rad ($rad = 2\pi/360 degree$) this becomes 
 
-$$ \omega_{earth} = 2 \pi / 60*24 = 0.00463 rad /min $$
+$$ \omega_{earth} = 2 \pi / (60*24) = 0.00436332313 rad /min $$
 
 Now, $\omega_{earth}$ is the angular velocity of the door, i.e, how fast the door should be openning. 
 
 The upparward (tangencial) door velocity is $V = r \omega_{earth}$ that for a 200mm axis ( axis is 20cm away from hinge)
 
-$$ V = r_{axis} \omega_{earth} = 200*0.00463 = 0.872664626 mm/min $$
+$$ V = r_{axis} \omega_{earth} = 200*0.00436332313 = 0.872664626 mm/min $$
 
 On the other hand the tangencial velocity is controled by rod thread and gear revolution. For a thread of 0.8mm, this means that it will raise 0.8mm every gear revolution.
 Therefore we would need approximately one revolution per minute to match the tangencial velocity of need for a point at the door 200mm away from the hinge.
@@ -53,13 +53,13 @@ $$ \text{Rotacao da terra(rotacao das estrelas no nosso referencial)} = 360 grau
 
 Ou usandando radiano ($rad = 2\pi/360 degree$) 
 
-$$ \omega_{terra} = 2 \pi / 60*24 = 0.00463 rad /min $$
+$$ \omega_{terra} = 2 \pi / (60*24) = 0.00436332313 rad /min $$
 
 Agora, $\omega_{terra}$ devera ser a velocidade angular da porta, i.e, o quao rapido a porta deve abrir. 
 
 A velocidade tangencial (para cima) de um ponto da porta sera $V = r \omega_{earth}$, que para um ponto a 200mm do dobradica se torna
 
-$$ V = r_{eixo} \omega_{terra} = 200*0.00463 = 0.872664626 mm/min $$
+$$ V = r_{eixo} \omega_{terra} = 200*0.00436332313 = 0.872664626 mm/min $$
 
 Por outro lado, a velocidade tangencial é controlada pela passo de rosca do eixo metalico e pela revolução da engrenagem. Para uma rosca de 0,8mm, isso significa que ela subirá 0,8mm a cada revolução da engrenagem.
 Portanto, precisaríamos de aproximadamente uma revolução por minuto para corresponder à velocidade tangencial necessária para um ponto na porta a 200mm da dobradiça.
