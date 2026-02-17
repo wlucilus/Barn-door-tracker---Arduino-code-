@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Star–Telescope Trajectories</title>
+<style>
+  body { font-family: Arial; background:#111; color:white; text-align:center;}
+  canvas { background:#222; margin:10px; border:1px solid #555;}
+  .controls { margin:10px;}
+</style>
+</head>
+
+<body>
+
+<h2>Alinhamento polar</h2>
+<h3>Trajetorias de Estrela – Telescopio </h3>
+
+<div class="controls">
+  ErroSul = <input type="range" id="aSlider" min="-2" max="2" step="0.01" value="0">
+  <span id="aVal">0</span>
+  &nbsp;&nbsp;
+  ErroLatitude = <input type="range" id="bSlider" min="-2" max="2" step="0.01" value="0.8">
+  <span id="bVal">0.8</span>
+</div>
+
+<canvas id="traj" width="400" height="400"></canvas>
+<canvas id="rot"  width="400" height="400"></canvas>
+
+<script>
+const traj = document.getElementById("traj");
+const rot  = document.getElementById("rot");
+const ctx1 = traj.getContext("2d");
+const ctx2 = rot.getContext("2d");
+
+const aSlider = document.getElementById("aSlider");
+const bSlider = document.getElementById("bSlider");
+const aVal = document.getElementById("aVal");
+const bVal = document.getElementById("bVal");
+
+const w = 1;
+const N = 500;
+const tVals = Array.from({length:N}, (_,i)=>i/N*Math.PI);  // semi-circle
+
+const scale = 120;
+const cx = 200, cy = 200;
+
+// --- For rotating frame: show only first few steps and zoom ---
+const showSteps = 50;
+const zoomScale = 200;
+
+function drawTrajectories() {
+  let a = parseFloat(aSlider.value);
+  let b = parseFloat(bSlider.value);
+  aVal.textContent = a.toFixed(2);
+  bVal.textContent = b.toFixed(2);
+
+  ctx1.clearRect(0,0,400,400);
+  ctx2.clearRect(0,0,400,400);
+
+  // --- STAR AND TELESCOPE TRAJECTORIES ---
+  let starX = tVals.map(tt => -Math.cos(tt));
+  let starY = tVals.map(tt => Math.sin(tt));
+
+  let telX  = starX.map(x => x + a);
+  let telY  = starY.map(y => y + b);
+
+  // --- Draw stationary frame ---
+  // Star orbit
+  ctx1.strokeStyle="cyan";
+  ctx1.beginPath();
+  for(let i=0;i<N;i++){
+    let x = cx + starX[i]*scale;
+    let y = cy - starY[i]*scale;
+    if(i==0) ctx1.moveTo(x,y);
+    else ctx1.lineTo(x,y);
+  }
+  ctx1.stroke();
+  ctx1.fillStyle="cyan";
+  ctx1.fillText("S", cx, cy);
+
+  // Telescope orbit
+  ctx1.strokeStyle="orange";
+  ctx1.beginPath();
+  for(let i=0;i<N;i++){
+    let x = cx + telX[i]*scale;
+    let y = cy - telY[i]*scale;
+    if(i==0) ctx1.moveTo(x,y);
+    else ctx1.lineTo(x,y);
+  }
+  ctx1.stroke();
+  ctx1.fillStyle="orange";
+  ctx1.fillText("T", cx + a*scale, cy - b*scale);
+
+  // --- STAR RELATIVE TO TELESCOPE (rotating frame) ---
+  ctx2.strokeStyle="yellow";
+  ctx2.beginPath();
+  for(let i=0;i<showSteps;i++){
+    let vx = Math.sin(tVals[i]);
+    let vy = Math.cos(tVals[i]);
+    let theta = Math.atan2(vy,vx);
+    let xr = (-a)*Math.cos(theta) + (-b)*Math.sin(theta);
+    let yr = -(-a)*Math.sin(theta) + (-b)*Math.cos(theta);
+
+    let px = cx + xr*zoomScale;
+    let py = cy - yr*zoomScale;
+
+    if(i==0) ctx2.moveTo(px,py);
+    else ctx2.lineTo(px,py);
+  }
+  ctx2.stroke();
+  ctx2.fillStyle="yellow";
+  ctx2.fillText("Padrao de rastro da estrela", 40,20);
+
+  // Draw small blue ball at the initial point (first step)
+  let vx0 = Math.sin(tVals[0]);
+  let vy0 = Math.cos(tVals[0]);
+  let theta0 = Math.atan2(vy0,vx0);
+  let xr0 = (-a)*Math.cos(theta0) + (-b)*Math.sin(theta0);
+  let yr0 = -(-a)*Math.sin(theta0) + (-b)*Math.cos(theta0);
+
+  ctx2.fillStyle = "blue";
+  ctx2.beginPath();
+  ctx2.arc(cx + xr0*zoomScale, cy - yr0*zoomScale, 5, 0, 2*Math.PI);
+  ctx2.fill();
+}
+
+// Draw initially
+drawTrajectories();
+
+// Update on slider change
+aSlider.addEventListener("input", drawTrajectories);
+bSlider.addEventListener("input", drawTrajectories);
+</script>
+
+</body>
+</html>
